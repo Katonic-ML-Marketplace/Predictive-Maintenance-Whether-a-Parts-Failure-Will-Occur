@@ -1,6 +1,4 @@
 import pickle
-import requests
-from io import BytesIO
 from PIL import Image
 
 import pandas as pd
@@ -10,8 +8,7 @@ import plotly.graph_objects  as go
 from sklearn.linear_model import LogisticRegression
 
 
-response = requests.get(url='https://katonic.ai/favicon.ico')
-im = Image.open(BytesIO(response.content))
+im = Image.open("./favicon.ico")
 
 st.set_page_config(
     page_title='Predictive Maintenance Intelligence App', 
