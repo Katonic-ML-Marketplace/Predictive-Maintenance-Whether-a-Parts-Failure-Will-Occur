@@ -20,7 +20,7 @@ st.set_page_config(
     initial_sidebar_state = 'auto'
 )
 
-st.sidebar.image('logo.png')
+st.sidebar.image('image/logo.png')
 st.sidebar.title('Predictive Maintenance')
 st.sidebar.write('---')
 
@@ -32,7 +32,7 @@ This app predicts Whether a **Parts Failure Will Occur**!
 st.write('---')
 
 # load data
-data_df = pd.read_csv('predictive_maintenance.csv')
+data_df = pd.read_csv('data/predictive_maintenance.csv')
 data_df['broken_str'] = data_df['broken'].replace(0, 'Not Broken').replace(1, 'Broken')
 st.write(data_df.head(20))
 
@@ -96,7 +96,7 @@ y = data_df['broken']
 
 # to retrain
 agree = st.checkbox('Check to retrain the model')
-filename = 'finalized_model.sav'
+filename = 'model/finalized_model.sav'
 if agree:
     # Build Regression Model
     model = LogisticRegression() 
