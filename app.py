@@ -1,6 +1,4 @@
 import pickle
-import requests
-from io import BytesIO
 from PIL import Image
 
 import pandas as pd
@@ -9,9 +7,7 @@ import plotly.express as px
 import plotly.graph_objects  as go
 from sklearn.linear_model import LogisticRegression
 
-
-response = requests.get(url='https://katonic.ai/favicon.ico')
-im = Image.open(BytesIO(response.content))
+im = Image.open('image/favicon.ico')
 
 st.set_page_config(
     page_title='Predictive Maintenance Intelligence App', 
@@ -123,7 +119,7 @@ if st.sidebar.button('Prediction'):
     st.header('Predictive Maintenance Predictions')
     label = 'Need Maintenance' if prediction > 0.5 else 'No Maintenance Needed'
     st.write(f'Prediction Label: **{label}**')
-    st.write(f'Prediction Probability: **{prediction}**')
+    st.write(f'Prediction Probability: **{prediction[0]}**')
 else:
     st.warning('Please Click on Prediction')
 st.write('---')
